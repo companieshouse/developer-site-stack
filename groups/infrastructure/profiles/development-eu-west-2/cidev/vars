@@ -13,3 +13,4 @@ internal_top_level_domain = "-cidev.development.aws.internal"
 
 ec2_key_pair_name = "chs-cidev"
 
+ec2_image_id = "ami-04018f95156d810bc" # ECS optimized Amazon2 Linux in London created 15/03/2023
