@@ -82,7 +82,7 @@ data "vault_generic_secret" "secrets" {
 locals {
   # stack name is hardcoded here in main.tf for this stack. It should not be overridden per env
   stack_name       = "developer-site"
-  stack_fullname   = "${local.stack_name}-stack"
+  stack_fullname   = "${local.stack_name}-demoecs"
   name_prefix      = "${local.stack_name}-${var.environment}"
 
   public_lb_cidrs  = ["0.0.0.0/0"]
