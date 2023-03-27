@@ -95,6 +95,7 @@ locals {
                       concat(local.internal_cidrs,local.vpn_cidrs,local.management_private_subnet_cidrs,split(",",local.application_cidrs),split(",",local.public_cidrs)) }"
 }
 
+# Updated Source with latest tag - 1.1.3 
 module "ecs-cluster" {
   source = "git@github.com:companieshouse/terraform-library-ecs-cluster.git"
 
