@@ -13,7 +13,7 @@ terraform {
 data "terraform_remote_state" "networks" {
   backend = "s3"
   config = {
-    bucket = "${var.remote_state_bucket}"
+    bucket = var.remote_state_bucket
     key    = "${var.state_prefix}/${var.deploy_to}/${var.deploy_to}.tfstate"
     region = var.aws_region
   }
