@@ -95,13 +95,13 @@ locals {
                       concat(local.internal_cidrs,local.vpn_cidrs,local.management_private_subnet_cidrs,split(",",local.application_cidrs),split(",",local.public_cidrs)) }"
 }
 
-# Updated Source with latest tag - 1.1.3 
 module "ecs-cluster" {
-  source = "git@github.com:companieshouse/terraform-library-ecs-cluster.git"
+  source = "git::git@github.com:companieshouse/terraform-library-ecs-cluster.git?ref=1.1.1"
 
   stack_name                 = local.stack_name
   name_prefix                = local.name_prefix
   environment                = var.environment
+  container_insights_enablement = var.container_insights_enablement
   vpc_id                     = local.vpc_id
   subnet_ids                 = local.application_ids
   ec2_key_pair_name          = var.ec2_key_pair_name
