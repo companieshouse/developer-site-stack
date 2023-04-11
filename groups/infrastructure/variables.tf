@@ -104,7 +104,7 @@ variable "internal_albs" {
 }
 
 # Container Insights - ECS
-variable "container_insights_enablement" {
-  type        = string
+variable "enable_container_insights" {
+  type        = bool
   description = "Whether container sights are set, valid values are [enabled,disabled]" 
 }
