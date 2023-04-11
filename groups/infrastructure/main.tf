@@ -96,8 +96,7 @@ locals {
 }
 
 module "ecs-cluster" {
-  source = "git::git@github.com:companieshouse/terraform-library-ecs-cluster.git?ref=1.1.4"
-  #source = "git@github.com:companieshouse/terraform-library-ecs-cluster.git"
+  source = "git@github.com:companieshouse/terraform-library-ecs-cluster.git"
 
   stack_name                    = local.stack_name
   name_prefix                   = local.name_prefix
