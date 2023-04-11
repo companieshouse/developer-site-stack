@@ -108,7 +108,6 @@ module "ecs-cluster" {
   ec2_image_id                  = var.ec2_image_id
   asg_max_instance_count        = var.asg_max_instance_count
   asg_min_instance_count        = var.asg_min_instance_count
-  #enable_container_insights     = var.enable_container_insights
   asg_desired_instance_count    = var.asg_desired_instance_count
 }
 
