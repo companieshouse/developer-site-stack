@@ -105,6 +105,7 @@ variable "internal_albs" {
 
 # Container Insights - ECS
 variable "enable_container_insights" {
-  type        = string
-  description = "Whether container sights are set, valid values are [enabled,disabled]" 
+  type        = bool
+  description = "Whether container sights are set, valid values are [enabled,disabled]"
+  default     = false 
 }
