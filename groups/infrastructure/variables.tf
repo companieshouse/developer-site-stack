@@ -107,5 +107,5 @@ variable "internal_albs" {
 variable "enable_container_insights" {
   type        = string
   description = "Whether container sights are set, valid values are [enabled,disabled]"
-  default     = disabled
+  default     = "disabled"
 }
