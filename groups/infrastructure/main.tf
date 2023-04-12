@@ -81,35 +81,35 @@ data "vault_generic_secret" "secrets" {
 
 locals {
   # stack name is hardcoded here in main.tf for this stack. It should not be overridden per env
-  stack_name       = "developer-site"
-  stack_fullname   = "${local.stack_name}-stack"
-  name_prefix      = "${local.stack_name}-${var.environment}"
+  stack_name     = "developer-site"
+  stack_fullname = "${local.stack_name}-stack"
+  name_prefix    = "${local.stack_name}-${var.environment}"
 
-  public_lb_cidrs  = ["0.0.0.0/0"]
-  lb_subnet_ids    = "${var.internal_albs ? local.application_ids : local.public_ids}" # place ALB in correct subnets
-  lb_access_cidrs  = "${var.internal_albs ?
-                      concat(local.internal_cidrs,local.vpn_cidrs,local.management_private_subnet_cidrs,split(",",local.application_cidrs)) :
-                      local.public_lb_cidrs }"
-  app_access_cidrs = "${var.internal_albs ?
-                      concat(local.internal_cidrs,local.vpn_cidrs,local.management_private_subnet_cidrs,split(",",local.application_cidrs)) :
-                      concat(local.internal_cidrs,local.vpn_cidrs,local.management_private_subnet_cidrs,split(",",local.application_cidrs),split(",",local.public_cidrs)) }"
+  public_lb_cidrs = ["0.0.0.0/0"]
+  lb_subnet_ids   = var.internal_albs ? local.application_ids : local.public_ids # place ALB in correct subnets
+  lb_access_cidrs = (var.internal_albs ?
+    concat(local.internal_cidrs, local.vpn_cidrs, local.management_private_subnet_cidrs, split(",", local.application_cidrs)) :
+  local.public_lb_cidrs)
+  app_access_cidrs = (var.internal_albs ?
+    concat(local.internal_cidrs, local.vpn_cidrs, local.management_private_subnet_cidrs, split(",", local.application_cidrs)) :
+  concat(local.internal_cidrs, local.vpn_cidrs, local.management_private_subnet_cidrs, split(",", local.application_cidrs), split(",", local.public_cidrs)))
 }
 
 module "ecs-cluster" {
   source = "git@github.com:companieshouse/terraform-library-ecs-cluster.git?ref=1.1.4"
 
-  stack_name                    = local.stack_name
-  name_prefix                   = local.name_prefix
-  environment                   = var.environment
-  vpc_id                        = local.vpc_id
-  subnet_ids                    = local.application_ids
-  ec2_key_pair_name             = var.ec2_key_pair_name
-  ec2_instance_type             = var.ec2_instance_type
-  ec2_image_id                  = var.ec2_image_id
-  asg_max_instance_count        = var.asg_max_instance_count
-  asg_min_instance_count        = var.asg_min_instance_count
-  enable_container_insights     = var.enable_container_insights
-  asg_desired_instance_count    = var.asg_desired_instance_count
+  stack_name                 = local.stack_name
+  name_prefix                = local.name_prefix
+  environment                = var.environment
+  vpc_id                     = local.vpc_id
+  subnet_ids                 = local.application_ids
+  ec2_key_pair_name          = var.ec2_key_pair_name
+  ec2_instance_type          = var.ec2_instance_type
+  ec2_image_id               = var.ec2_image_id
+  asg_max_instance_count     = var.asg_max_instance_count
+  asg_min_instance_count     = var.asg_min_instance_count
+  enable_container_insights  = var.enable_container_insights
+  asg_desired_instance_count = var.asg_desired_instance_count
 }
 
 module "secrets" {
