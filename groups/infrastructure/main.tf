@@ -96,7 +96,7 @@ locals {
 }
 
 module "ecs-cluster" {
-  source = "git::git@github.com:companieshouse/terraform-library-ecs-cluster.git?ref=feature/CC-166-ContainerInsights"
+  source = "git@github.com:companieshouse/developer-site-stack.git?ref=feature/CC-166-ContainerInsights"
 
   stack_name                    = local.stack_name
   name_prefix                   = local.name_prefix
