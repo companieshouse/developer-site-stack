@@ -73,7 +73,7 @@ variable "ssl_certificate_id" {
 
 # DNS
 variable "zone_id" {
-  default = "" # default of empty string is used as conditional when creating route53 records i.e. if no zone_id provided then no route53
+  default     = "" # default of empty string is used as conditional when creating route53 records i.e. if no zone_id provided then no route53
   type        = string
   description = "The ID of the hosted zone to contain the Route 53 record."
 }
@@ -101,4 +101,11 @@ variable "internal_albs" {
   type        = bool
   description = "Whether the ALBs should be internal or public facing"
   default     = true
+}
+
+# Container Insights - ECS
+variable "enable_container_insights" {
+  type        = bool
+  description = "A boolean value indicating whether to enable Container Insights or not"
+  default     = false
 }
