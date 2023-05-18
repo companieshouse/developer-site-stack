@@ -24,7 +24,7 @@ resource "aws_lb_listener" "dev-specs-alb-listener" {
 resource "aws_route53_record" "dev-specs-r53-record" {
   count   = "${var.zone_id == "" ? 0 : 1}" # zone_id defaults to empty string giving count = 0 i.e. not route 53 record
   zone_id = var.zone_id
-  name    = "dev-specs-ecs${var.external_top_level_domain}" # TODO remove "-ecs" once migrated from mesos
+  name    = "developer-specs${var.external_top_level_domain}" # TODO remove "-ecs" once migrated from mesos
   type    = "A"
   alias {
     name                   = aws_lb.dev-specs-alb.dns_name
