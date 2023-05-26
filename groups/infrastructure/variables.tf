@@ -43,7 +43,7 @@ variable "ec2_instance_type" {
   description = "The instance type for ec2 instances in the clusters."
 }
 variable "ec2_image_id" {
-  default     = "ami-007ef488b3574da6b" # ECS optimized Linux in London created 16/10/2019
+  default     = "ami-04018f95156d810bc" # ECS optimized Amazon2 Linux in London created 15/03/2023
   type        = string
   description = "The machine image name for the ECS cluster launch configuration."
 }
@@ -80,10 +80,6 @@ variable "zone_id" {
 variable "external_top_level_domain" {
   type        = string
   description = "The type levelel of the DNS domain for external access."
-}
-variable "internal_top_level_domain" {
-  type        = string
-  description = "The type levelel of the DNS domain for internal access."
 }
 
 # Vault

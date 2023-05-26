@@ -132,7 +132,6 @@ module "albs" {
   ssl_certificate_id        = var.ssl_certificate_id
   zone_id                   = var.zone_id
   external_top_level_domain = var.external_top_level_domain
-  internal_top_level_domain = var.internal_top_level_domain
   subnet_ids                = local.lb_subnet_ids
   web_access_cidrs          = local.lb_access_cidrs
   internal_albs             = var.internal_albs

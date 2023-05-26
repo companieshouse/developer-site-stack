@@ -41,10 +41,6 @@ variable "external_top_level_domain" {
   type        = string
   description = "The type levelel of the DNS domain for external access."
 }
-variable "internal_top_level_domain" {
-  type        = string
-  description = "The type levelel of the DNS domain for internal access."
-}
 
 # Certificates
 variable "ssl_certificate_id" {
