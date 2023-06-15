@@ -86,13 +86,12 @@ locals {
   name_prefix    = "${local.stack_name}-${var.environment}"
 
   public_lb_cidrs = ["0.0.0.0/0"]
+  iboss_access_cidrs = ["10.40.250.0/24"]
+
   lb_subnet_ids   = var.internal_albs ? local.application_ids : local.public_ids # place ALB in correct subnets
   lb_access_cidrs = (var.internal_albs ?
-    concat(local.internal_cidrs, local.vpn_cidrs, local.management_private_subnet_cidrs, split(",", local.application_cidrs)) :
+    concat(local.internal_cidrs, local.vpn_cidrs, local.management_private_subnet_cidrs, local.iboss_access_cidrs, split(",", local.application_cidrs)) :
   local.public_lb_cidrs)
-  app_access_cidrs = (var.internal_albs ?
-    concat(local.internal_cidrs, local.vpn_cidrs, local.management_private_subnet_cidrs, split(",", local.application_cidrs)) :
-  concat(local.internal_cidrs, local.vpn_cidrs, local.management_private_subnet_cidrs, split(",", local.application_cidrs), split(",", local.public_cidrs)))
 }
 
 module "ecs-cluster" {
