@@ -10,6 +10,7 @@ enable_container_insights = true
 ssl_certificate_id = "arn:aws:acm:eu-west-2:449229032822:certificate/5c57a264-3168-4de8-8767-40fd0cedebf0"
 zone_id = "" # no route53 for live yet so empty zone id
 external_top_level_domain = ".company-information.service.gov.uk"
+internal_albs = false # external ALBs required for live dev site
 
 ec2_key_pair_name = "ch-aws-live"
 
