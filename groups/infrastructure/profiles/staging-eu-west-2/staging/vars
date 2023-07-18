@@ -17,4 +17,4 @@ ec2_key_pair_name = "ch-aws-staging"
 ec2_instance_type = "t3.medium"
 asg_max_instance_count = 3 # allow staging to scale up
 asg_min_instance_count = 1 # allow staging to scale down
-asg_desired_instance_count = 1 # keep staging minimal by default
+asg_desired_instance_count = 2 # keep staging small by default
