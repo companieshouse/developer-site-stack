@@ -3,7 +3,6 @@ provider "aws" {
 }
 
 terraform {
-
   backend "s3" {
   }
   required_version = "~> 0.13"
@@ -18,7 +17,6 @@ terraform {
     }
   }
 }
-
 
 # Configure the remote state data source to acquire configuration
 # created through the code in ch-service-terraform/aws-mm-networks.
