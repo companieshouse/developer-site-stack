@@ -3,8 +3,7 @@ provider "aws" {
 }
 
 terraform {
-  backend "s3" {
-  }
+  backend "s3" {}
   required_version = "~> 0.13"
   required_providers {
     aws = {
@@ -73,15 +72,6 @@ data "terraform_remote_state" "services-stack-configs" {
     bucket = var.aws_bucket # aws-common-infrastructure-terraform repo uses the same remote state bucket
     key    = "aws-common-infrastructure-terraform/common-${var.aws_region}/services-stack-configs.tfstate"
     region = var.aws_region
-  }
-}
-
-provider "vault" {
-  auth_login {
-    path = "auth/userpass/login/${var.vault_username}"
-    parameters = {
-      password = var.vault_password
-    }
   }
 }
 
