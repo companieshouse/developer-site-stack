@@ -1,10 +1,19 @@
 provider "aws" {
-  region  = var.aws_region
-  version = "~> 2.32.0"
+  region = var.aws_region
 }
 
 terraform {
-  backend "s3" {
+  backend "s3" {}
+  required_version = "~> 0.13"
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "~> 4.54.0"
+    }
+    vault = {
+      source  = "hashicorp/vault"
+      version = "~> 3.18.0"
+    }
   }
 }
 
@@ -66,15 +75,6 @@ data "terraform_remote_state" "services-stack-configs" {
   }
 }
 
-provider "vault" {
-  auth_login {
-    path = "auth/userpass/login/${var.vault_username}"
-    parameters = {
-      password = var.vault_password
-    }
-  }
-}
-
 data "vault_generic_secret" "secrets" {
   path = "applications/${var.aws_profile}/${var.environment}/${local.stack_fullname}"
 }
@@ -85,10 +85,10 @@ locals {
   stack_fullname = "${local.stack_name}-stack"
   name_prefix    = "${local.stack_name}-${var.environment}"
 
-  public_lb_cidrs = ["0.0.0.0/0"]
+  public_lb_cidrs    = ["0.0.0.0/0"]
   iboss_access_cidrs = ["10.40.250.0/24"]
 
-  lb_subnet_ids   = var.internal_albs ? local.application_ids : local.public_ids # place ALB in correct subnets
+  lb_subnet_ids = var.internal_albs ? local.application_ids : local.public_ids # place ALB in correct subnets
   lb_access_cidrs = (var.internal_albs ?
     concat(local.internal_cidrs, local.vpn_cidrs, local.management_private_subnet_cidrs, local.iboss_access_cidrs, split(",", local.application_cidrs)) :
   local.public_lb_cidrs)
