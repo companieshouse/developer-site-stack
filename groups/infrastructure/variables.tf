@@ -82,16 +82,6 @@ variable "external_top_level_domain" {
   description = "The type levelel of the DNS domain for external access."
 }
 
-# Vault
-variable "vault_username" {
-  type        = string
-  description = "The username used by the Vault provider."
-}
-variable "vault_password" {
-  type        = string
-  description = "The password used by the Vault provider."
-}
-
 # Networking
 variable "internal_albs" {
   type        = bool
