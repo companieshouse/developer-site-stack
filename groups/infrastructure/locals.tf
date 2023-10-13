@@ -17,18 +17,16 @@ locals {
     "web-oauth2-request-key"   = local.stack_secrets["web-oauth2-request-key"]
   }
 
-  application_ids = data.aws_subnets.application.ids
+  application_ids   = data.aws_subnets.application.ids
   application_cidrs = [for s in data.aws_subnet.application : s.cidr_block]
-  public_ids   = data.aws_subnets.public.ids
-  public_cidrs = [for s in data.aws_subnet.public : s.cidr_block]
+  public_ids        = data.aws_subnets.public.ids
+  public_cidrs      = [for s in data.aws_subnet.public : s.cidr_block]
 
   public_lb_cidrs    = ["0.0.0.0/0"]
   iboss_access_cidrs = ["10.40.250.0/24"]
 
-  lb_subnet_ids = var.internal_albs ? local.application_ids : local.public_ids # place ALB in correct subnets 
-  lb_access_cidrs = (var.internal_albs ?
-    concat(local.internal_cidrs, local.vpn_cidrs, local.management_private_subnet_cidrs, local.iboss_access_cidrs, local.application_cidrs)) :
-  local.public_lb_cidrs)
+  lb_subnet_ids   = var.internal_albs ? local.application_ids : local.public_ids # place ALB in correct subnets 
+  lb_access_cidrs = (var.internal_albs ? concat(local.internal_cidrs, local.vpn_cidrs, local.management_private_subnet_cidrs, local.iboss_access_cidrs, local.application_cidrs) : local.public_lb_cidrs)
 
   internal_cidrs                  = values(data.terraform_remote_state.networks_common_infra.outputs.internal_cidrs)
   vpn_cidrs                       = values(data.terraform_remote_state.networks_common_infra.outputs.vpn_cidrs)
