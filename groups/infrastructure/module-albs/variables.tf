@@ -1,7 +1,7 @@
 # ECS Service
 variable "stack_name" {
- type        = string
- description = "The name of the Stack / ECS Cluster."
+  type        = string
+  description = "The name of the Stack / ECS Cluster."
 }
 variable "name_prefix" {
   type        = string
@@ -16,7 +16,7 @@ variable "environment" {
 
 # Networking
 variable "subnet_ids" {
-  type        = string
+  type        = list(string)
   description = "Subnet IDs of application subnets from aws-mm-networks remote state."
 }
 variable "web_access_cidrs" {

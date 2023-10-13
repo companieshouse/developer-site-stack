@@ -1,7 +1,7 @@
 resource "aws_lb" "dev-specs-alb" {
   name            = "dev-specs-${var.environment}-lb"
   security_groups = [aws_security_group.dev-site-sg.id]
-  subnets         = flatten([split(",", var.subnet_ids)])
+  subnets         = var.subnet_ids
   internal        = var.internal_albs
 }
 
@@ -12,7 +12,7 @@ resource "aws_lb_listener" "dev-specs-alb-listener" {
   ssl_policy        = "ELBSecurityPolicy-2016-08"
   certificate_arn   = var.ssl_certificate_id
   default_action {
-    type             = "fixed-response"
+    type = "fixed-response"
     fixed_response {
       content_type = "text/plain"
       message_body = "OK"
