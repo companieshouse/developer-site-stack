@@ -65,6 +65,18 @@ variable "asg_desired_instance_count" {
   description = "The desired number of instances in the autoscaling group for the cluster. Must fall within the min/max instance count range."
 }
 
+variable "asg_scaledown_schedule" {
+  default     = ""
+  type        = string
+  description = "The schedule to use when scaling down the number of EC2 instances to zero."
+}
+
+variable "asg_scaleup_schedule" {
+  default     = ""
+  type        = string
+  description = "The schedule to use when scaling up the number of EC2 instances to their normal desired level."
+}
+
 # Certificates
 variable "ssl_certificate_id" {
   type        = string
