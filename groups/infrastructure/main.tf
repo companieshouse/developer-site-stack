@@ -18,7 +18,7 @@ terraform {
 }
 
 module "ecs-cluster" {
-  source = "git@github.com:companieshouse/terraform-library-ecs-cluster.git?ref=1.1.4"
+  source = "git@github.com:companieshouse/terraform-library-ecs-cluster.git?ref=1.1.5"
 
   stack_name                 = local.stack_name
   name_prefix                = local.name_prefix
@@ -32,6 +32,8 @@ module "ecs-cluster" {
   asg_min_instance_count     = var.asg_min_instance_count
   enable_container_insights  = var.enable_container_insights
   asg_desired_instance_count = var.asg_desired_instance_count
+  scaledown_schedule         = var.asg_scaledown_schedule
+  scaleup_schedule           = var.asg_scaleup_schedule
 }
 
 module "secrets" {
