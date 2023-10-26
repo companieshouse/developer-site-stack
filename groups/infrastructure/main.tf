@@ -18,7 +18,7 @@ terraform {
 }
 
 module "ecs-cluster" {
-  source = "git@github.com:companieshouse/terraform-library-ecs-cluster.git?ref=1.1.6"
+  source = "git@github.com:companieshouse/terraform-library-ecs-cluster.git?ref=1.1.7"
 
   stack_name                 = local.stack_name
   name_prefix                = local.name_prefix
@@ -34,6 +34,7 @@ module "ecs-cluster" {
   asg_desired_instance_count = var.asg_desired_instance_count
   scaledown_schedule         = var.asg_scaledown_schedule
   scaleup_schedule           = var.asg_scaleup_schedule
+  enable_asg_autoscaling     = var.enable_asg_autoscaling
 }
 
 module "secrets" {
