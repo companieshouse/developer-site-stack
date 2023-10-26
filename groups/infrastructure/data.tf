@@ -27,6 +27,10 @@ data "aws_subnets" "public" {
     name   = "tag:NetworkType"
     values = ["public"]
   }
+  filter {
+    name   = "tag:Name"
+    values = [local.public_subnet_pattern]
+  }
 }
 
 data "aws_subnet" "public" {
