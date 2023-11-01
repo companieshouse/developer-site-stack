@@ -18,7 +18,7 @@ terraform {
 }
 
 module "ecs-cluster" {
-  source = "git@github.com:companieshouse/terraform-library-ecs-cluster.git?ref=1.1.7"
+  source = "git@github.com:companieshouse/terraform-modules//aws/ecs/ecs-cluster?ref=1.0.212"
 
   stack_name                 = local.stack_name
   name_prefix                = local.name_prefix
