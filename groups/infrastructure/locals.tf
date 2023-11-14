@@ -11,6 +11,12 @@ locals {
   kms_key_alias              = local.stack_secrets["kms_key_alias"]
   vpc_name                   = local.stack_secrets["vpc_name"]
 
+  default_tags = {
+    project             = ""
+    owner               = ""
+    stack               = local.stack_name
+  }
+
   parameter_store_secrets = {
     "vpc-name"                 = local.stack_secrets["vpc_name"],
     "web-oauth2-client-id"     = local.stack_secrets["web-oauth2-client-id"],
