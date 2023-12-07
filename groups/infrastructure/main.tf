@@ -18,7 +18,7 @@ terraform {
 }
 
 module "ecs-cluster" {
-  source = "git@github.com:companieshouse/terraform-modules//aws/ecs/ecs-cluster?ref=1.0.218"
+  source = "git@github.com:companieshouse/terraform-modules//aws/ecs/ecs-cluster?ref=1.0.229"
 
   stack_name                  = local.stack_name
   name_prefix                 = local.name_prefix
@@ -40,10 +40,11 @@ module "ecs-cluster" {
 }
 
 module "secrets" {
-  source = "git@github.com:companieshouse/terraform-modules//aws/ecs/secrets?ref=1.0.192"
+  source = "git@github.com:companieshouse/terraform-modules//aws/ecs/secrets?ref=1.0.229"
 
   environment = var.environment
   name_prefix = local.name_prefix
+  environment = var.environment
   secrets     = local.parameter_store_secrets
   kms_key_id  = data.aws_kms_key.stack_configs.id
 }
