@@ -68,7 +68,11 @@ resource "aws_security_group" "temporary_to_delete" {
   description = "Allow TLS inbound traffic and all outbound traffic"
   vpc_id      = data.aws_vpc.vpc.id
 
+  ingress = []
+  egress  = []
+
   tags = {
     Name = "temporary_to_delete"
   }
+
 }
