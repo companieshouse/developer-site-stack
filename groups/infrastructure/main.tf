@@ -65,7 +65,7 @@ module "albs" {
 
 resource "aws_security_group" "temporary_to_delete" {
   name        = "temporary_to_delete"
-/*  description = "Allow TLS inbound traffic and all outbound traffic"
+  description = "Allow TLS inbound traffic and all outbound traffic"
   vpc_id      = data.aws_vpc.vpc.id
 
   ingress = []
@@ -79,6 +79,6 @@ resource "aws_security_group" "temporary_to_delete" {
 
   tags = {
     Name = "temporary_to_delete"
-  }*/
+  }
 
 }
