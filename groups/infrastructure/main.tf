@@ -62,13 +62,3 @@ module "albs" {
   web_access_cidrs          = local.lb_access_cidrs
   internal_albs             = var.internal_albs
 }
-
-resource "aws_security_group" "temporary_to_delete" {
-  name        = "temporary_to_delete"
-  description = "Allow TLS inbound traffic and all outbound traffic"
-  vpc_id      = data.aws_vpc.vpc.id
-
-  tags = {
-    Name = "temporary_to_delete"
-  }
-}
