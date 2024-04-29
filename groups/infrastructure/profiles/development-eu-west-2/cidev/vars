@@ -12,3 +12,9 @@ zone_id = "Z2KSI4Z5ZN9NT0"
 external_top_level_domain = ".cidev.aws.chdev.org"
 
 ec2_key_pair_name = "chs-cidev"
+
+# EC2 sizing and scaling options
+ec2_instance_type = "t3.medium"
+asg_max_instance_count = 2 # allow cidev to scale up
+asg_min_instance_count = 0 # allow cidev to scale down to 0
+asg_desired_instance_count = 0 # keep cidev at 0 instance count until ec2 launch type service is needed
