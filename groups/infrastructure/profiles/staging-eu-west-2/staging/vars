@@ -16,5 +16,5 @@ ec2_key_pair_name = "ch-aws-staging"
 # EC2 sizing and scaling options
 ec2_instance_type = "t3.medium"
 asg_max_instance_count = 3 # allow staging to scale up
-asg_min_instance_count = 0 # allow staging to scale down
-asg_desired_instance_count = 0 # keep staging small by default
+asg_min_instance_count = 0 # scaled to zero as all services use fargate
+asg_desired_instance_count = 0 # scaled to zero as all services use fargate
