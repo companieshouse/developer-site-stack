@@ -17,5 +17,5 @@ ec2_key_pair_name = "ch-aws-live"
 # EC2 sizing and scaling options
 ec2_instance_type = "t3.medium"
 asg_max_instance_count = 6 # allow live to scale up to 2 instances per az if required
-asg_min_instance_count = 3 # keep live multi-az by default
-asg_desired_instance_count = 3 # keep live multi-az by default
+asg_min_instance_count = 0 # scaled to zero as all services use fargate
+asg_desired_instance_count = 0 # scaled to zero as all services use fargate
