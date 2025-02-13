@@ -3,6 +3,12 @@ resource "aws_lb" "dev-specs-alb" {
   security_groups = [aws_security_group.dev-site-sg.id]
   subnets         = var.subnet_ids
   internal        = var.internal_albs
+
+  tags = {
+    environment = var.environment
+    Name        = "dev-specs-${var.environment}-lb"
+    service     = "chs"
+  }
 }
 
 resource "aws_lb_listener" "dev-specs-alb-listener" {
