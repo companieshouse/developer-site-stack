@@ -8,7 +8,7 @@ enable_container_insights = true
 
 # Certificate for https access through ALB
 zone_id = "Z2KSI4Z5ZN9NT0"
-external_top_level_domain = ".cidev.aws.chdev.org"
+external_top_level_domain = "cidev.aws.chdev.org"
 
 ec2_key_pair_name = "chs-cidev"
 

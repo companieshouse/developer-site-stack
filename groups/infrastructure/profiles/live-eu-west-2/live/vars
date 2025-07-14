@@ -8,7 +8,7 @@ enable_container_insights = true
 
 # Certificate for https access through ALB
 zone_id = "" # no route53 for live yet so empty zone id
-external_top_level_domain = ".company-information.service.gov.uk"
+external_top_level_domain = "*.companieshouse.gov.uk"
 internal_albs = false # external ALBs required for live dev site
 
 ec2_key_pair_name = "ch-aws-live"
