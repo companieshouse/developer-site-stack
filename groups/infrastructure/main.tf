@@ -55,7 +55,7 @@ module "albs" {
   name_prefix               = local.name_prefix
   environment               = var.environment
   vpc_id                    = data.aws_vpc.vpc.id
-  ssl_certificate_id        = var.ssl_certificate_id
+  ssl_certificate_id  = data.aws_acm_certificate.cert.arn
   zone_id                   = var.zone_id
   external_top_level_domain = var.external_top_level_domain
   subnet_ids                = local.lb_subnet_ids

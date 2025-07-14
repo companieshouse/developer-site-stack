@@ -7,9 +7,8 @@ aws_profile = "development-eu-west-2"
 enable_container_insights = true
 
 # Certificate for https access through ALB
-ssl_certificate_id = "arn:aws:acm:eu-west-2:169942020521:certificate/272a4a3b-f978-4303-b089-c298979c6c93"
 zone_id = "Z2KSI4Z5ZN9NT0"
-external_top_level_domain = ".titans1.aws.chdev.org"
+external_top_level_domain = "titans1.aws.chdev.org"
 
 ec2_key_pair_name = "chs-titans1"
 
