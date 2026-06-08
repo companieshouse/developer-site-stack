@@ -57,7 +57,7 @@
 | <a name="input_ec2_instance_type"></a> [ec2\_instance\_type](#input\_ec2\_instance\_type) | The instance type for ec2 instances in the clusters. | `string` | `"t3.medium"` | no |
 | <a name="input_ec2_key_pair_name"></a> [ec2\_key\_pair\_name](#input\_ec2\_key\_pair\_name) | The key pair for SSH access to ec2 instances in the clusters. | `string` | n/a | yes |
 | <a name="input_enable_asg_autoscaling"></a> [enable\_asg\_autoscaling](#input\_enable\_asg\_autoscaling) | Whether to enable auto-scaling of the ASG by creating a capacity provider for the ECS cluster. | `bool` | `true` | no |
-| <a name="input_enable_concourse_access"></a> [enable\_concourse\_access](#input\_enable\_concourse\_access) | Defines whether access will be permitted from COncourse (true) or not (false) | `bool` | `false` | no |
+| <a name="input_enable_concourse_access"></a> [enable\_concourse\_access](#input\_enable\_concourse\_access) | Defines whether access will be permitted from Concourse (true) or not (false) | `bool` | `false` | no |
 | <a name="input_enable_container_insights"></a> [enable\_container\_insights](#input\_enable\_container\_insights) | A boolean value indicating whether to enable Container Insights or not | `bool` | `false` | no |
 | <a name="input_environment"></a> [environment](#input\_environment) | The environment name, defined in envrionments vars. | `string` | n/a | yes |
 | <a name="input_external_top_level_domain"></a> [external\_top\_level\_domain](#input\_external\_top\_level\_domain) | The type levelel of the DNS domain for external access. | `string` | n/a | yes |

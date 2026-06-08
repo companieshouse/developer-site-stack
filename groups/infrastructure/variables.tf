@@ -118,7 +118,7 @@ variable "external_top_level_domain" {
 # Networking
 variable "enable_concourse_access" {
   type        = bool
-  description = "Defines whether access will be permitted from COncourse (true) or not (false)"
+  description = "Defines whether access will be permitted from Concourse (true) or not (false)"
   default     = false
 }
 
