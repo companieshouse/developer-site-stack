@@ -28,7 +28,7 @@ resource "aws_lb_listener" "dev-site-alb-listener" {
 }
 
 resource "aws_route53_record" "dev-site-r53-record" {
-  count   = "${var.zone_id == "" ? 0 : 1}" # zone_id defaults to empty string giving count = 0 i.e. not route 53 record
+  count   = var.zone_id == "" ? 0 : 1 # zone_id defaults to empty string giving count = 0 i.e. not route 53 record
   zone_id = var.zone_id
   name    = "developer${var.external_top_level_domain}"
   type    = "A"
