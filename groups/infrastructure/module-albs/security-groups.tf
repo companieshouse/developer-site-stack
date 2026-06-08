@@ -2,9 +2,6 @@ resource "aws_security_group" "dev-site-sg" {
   description = "Security group for dev site albs"
   vpc_id      = var.vpc_id
 
-  ingress = []
-  egress  = []
-
   tags = {
     Environment = var.environment
     Name        = "${var.name_prefix}-alb-sg"
