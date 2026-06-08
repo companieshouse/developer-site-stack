@@ -3,18 +3,19 @@ provider "aws" {
 }
 
 terraform {
-  backend "s3" {}
-  required_version = "~> 1.3"
+  required_version = ">= 1.3, < 2.0"
   required_providers {
     aws = {
       source  = "hashicorp/aws"
-      version = "~> 4.54.0"
+      version = ">= 6.0, < 7.0"
     }
     vault = {
       source  = "hashicorp/vault"
-      version = "~> 3.18.0"
+      version = ">= 5.0, < 6.0"
     }
   }
+
+  backend "s3" {}
 }
 
 module "ecs-cluster" {
@@ -51,14 +52,15 @@ module "secrets" {
 module "albs" {
   source = "./module-albs"
 
-  stack_name                = local.stack_name
-  name_prefix               = local.name_prefix
-  environment               = var.environment
-  vpc_id                    = data.aws_vpc.vpc.id
-  ssl_certificate_id        = var.ssl_certificate_id
-  zone_id                   = var.zone_id
-  external_top_level_domain = var.external_top_level_domain
-  subnet_ids                = local.lb_subnet_ids
-  web_access_cidrs          = local.lb_access_cidrs
-  internal_albs             = var.internal_albs
+  stack_name                 = local.stack_name
+  name_prefix                = local.name_prefix
+  environment                = var.environment
+  vpc_id                     = data.aws_vpc.vpc.id
+  ssl_certificate_id         = var.ssl_certificate_id
+  zone_id                    = var.zone_id
+  external_top_level_domain  = var.external_top_level_domain
+  subnet_ids                 = local.lb_subnet_ids
+  web_access_cidrs           = local.lb_access_cidrs
+  web_access_prefix_list_ids = local.web_access_prefix_list_ids
+  internal_albs              = var.internal_albs
 }

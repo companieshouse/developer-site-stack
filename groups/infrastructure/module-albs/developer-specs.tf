@@ -15,7 +15,7 @@ resource "aws_lb_listener" "dev-specs-alb-listener" {
   load_balancer_arn = aws_lb.dev-specs-alb.arn
   port              = "443"
   protocol          = "HTTPS"
-  ssl_policy        = "ELBSecurityPolicy-2016-08"
+  ssl_policy        = "ELBSecurityPolicy-TLS13-1-2-2021-06"
   certificate_arn   = var.ssl_certificate_id
   default_action {
     type = "fixed-response"
@@ -28,7 +28,7 @@ resource "aws_lb_listener" "dev-specs-alb-listener" {
 }
 
 resource "aws_route53_record" "dev-specs-r53-record" {
-  count   = "${var.zone_id == "" ? 0 : 1}" # zone_id defaults to empty string giving count = 0 i.e. not route 53 record
+  count   = var.zone_id == "" ? 0 : 1 # zone_id defaults to empty string giving count = 0 i.e. not route 53 record
   zone_id = var.zone_id
   name    = "developer-specs${var.external_top_level_domain}"
   type    = "A"

@@ -25,14 +25,18 @@ locals {
   public_ids        = data.aws_subnets.public.ids
   public_cidrs      = [for s in data.aws_subnet.public : s.cidr_block]
 
-  public_lb_cidrs    = ["0.0.0.0/0"]
-  iboss_access_cidrs = ["10.40.250.0/24"]
+  public_lb_cidrs = ["0.0.0.0/0"]
 
   lb_subnet_ids   = var.internal_albs ? local.application_ids : local.public_ids # place ALB in correct subnets 
-  lb_access_cidrs = (var.internal_albs ? concat(local.internal_cidrs, local.vpn_cidrs, local.management_private_subnet_cidrs, local.iboss_access_cidrs, local.application_cidrs) : local.public_lb_cidrs)
+  lb_access_cidrs = (var.internal_albs ? concat(local.management_private_subnet_cidrs, local.application_cidrs) : local.public_lb_cidrs)
 
-  internal_cidrs                  = values(data.terraform_remote_state.networks_common_infra.outputs.internal_cidrs)
-  vpn_cidrs                       = values(data.terraform_remote_state.networks_common_infra.outputs.vpn_cidrs)
   management_private_subnet_cidrs = values(data.terraform_remote_state.networks_common_infra_ireland.outputs.management_private_subnet_cidrs)
 
+  admin_prefix_list_id     = data.aws_ec2_managed_prefix_list.admin.id
+  concourse_prefix_list_id = var.enable_concourse_access ? data.aws_ec2_managed_prefix_list.concourse[0].id : ""
+
+  web_access_prefix_list_ids = compact([
+    local.admin_prefix_list_id,
+    local.concourse_prefix_list_id
+  ])
 }

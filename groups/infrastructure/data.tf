@@ -44,3 +44,13 @@ data "aws_vpc" "vpc" {
     values = [local.vpc_name]
   }
 }
+
+data "aws_ec2_managed_prefix_list" "admin" {
+  name = "administration-cidr-ranges"
+}
+
+data "aws_ec2_managed_prefix_list" "concourse" {
+  count = var.enable_concourse_access ? 1 : 0
+
+  name = "shared-services-management-cidrs"
+}
