@@ -24,7 +24,7 @@ moved {
 }
 
 module "ecs_cluster" {
-  source = "git@github.com:companieshouse/terraform-modules//aws/ecs/ecs-cluster?ref=1.0.431"
+  source = "git@github.com:companieshouse/terraform-modules//aws/ecs/ecs-cluster?ref=1.0.437"
 
   stack_name  = local.stack_name
   name_prefix = local.name_prefix
@@ -120,14 +120,14 @@ module "dev_specs_alb" {
 }
 
 module "iac_tags" {
-  source = "git@github.com:companieshouse/terraform-modules//aws/tagging/iac?ref=tags/1.0.431"
+  source = "git@github.com:companieshouse/terraform-modules//aws/tagging/iac?ref=tags/1.0.437"
 
   group           = "infrastructure"
   source_code_url = "https://github.com/companieshouse/developer-site-stack"
 }
 
 module "owner_tags" {
-  source = "git@github.com:companieshouse/terraform-modules//aws/tagging/owner?ref=tags/1.0.431"
+  source = "git@github.com:companieshouse/terraform-modules//aws/tagging/owner?ref=tags/1.0.437"
 
   platform_owner = "platform"
 }

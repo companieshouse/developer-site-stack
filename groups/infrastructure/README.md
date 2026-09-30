@@ -22,9 +22,9 @@
 | ---- | ------ | ------- |
 | <a name="module_dev_alb"></a> [dev\_alb](#module\_dev\_alb) | git@github.com:companieshouse/terraform-modules//aws/application_load_balancer | tags/1.0.437 |
 | <a name="module_dev_specs_alb"></a> [dev\_specs\_alb](#module\_dev\_specs\_alb) | git@github.com:companieshouse/terraform-modules//aws/application_load_balancer | tags/1.0.437 |
-| <a name="module_ecs_cluster"></a> [ecs\_cluster](#module\_ecs\_cluster) | git@github.com:companieshouse/terraform-modules//aws/ecs/ecs-cluster | 1.0.431 |
-| <a name="module_iac_tags"></a> [iac\_tags](#module\_iac\_tags) | git@github.com:companieshouse/terraform-modules//aws/tagging/iac | tags/1.0.431 |
-| <a name="module_owner_tags"></a> [owner\_tags](#module\_owner\_tags) | git@github.com:companieshouse/terraform-modules//aws/tagging/owner | tags/1.0.431 |
+| <a name="module_ecs_cluster"></a> [ecs\_cluster](#module\_ecs\_cluster) | git@github.com:companieshouse/terraform-modules//aws/ecs/ecs-cluster | 1.0.437 |
+| <a name="module_iac_tags"></a> [iac\_tags](#module\_iac\_tags) | git@github.com:companieshouse/terraform-modules//aws/tagging/iac | tags/1.0.437 |
+| <a name="module_owner_tags"></a> [owner\_tags](#module\_owner\_tags) | git@github.com:companieshouse/terraform-modules//aws/tagging/owner | tags/1.0.437 |
 
 ## Resources
 
