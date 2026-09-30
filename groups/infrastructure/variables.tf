@@ -16,29 +16,6 @@ variable "aws_profile" {
   description = "The AWS profile to use for deployment."
 }
 
-
-# Terraform
-variable "aws_bucket" {
-  type        = string
-  description = "The bucket used to store the current terraform state files"
-}
-
-variable "remote_state_bucket" {
-  type        = string
-  description = "Alternative bucket used to store the remote state files from ch-service-terraform"
-}
-
-variable "state_prefix" {
-  type        = string
-  description = "The bucket prefix used with the remote_state_bucket files."
-}
-
-variable "deploy_to" {
-  type        = string
-  description = "Bucket namespace used with remote_state_bucket and state_prefix."
-}
-
-
 # EC2
 variable "ec2_key_pair_name" {
   type        = string
@@ -49,12 +26,6 @@ variable "ec2_instance_type" {
   default     = "t3.medium"
   type        = string
   description = "The instance type for ec2 instances in the clusters."
-}
-
-variable "ec2_image_id" {
-  default     = "ami-04018f95156d810bc" # ECS optimized Amazon2 Linux in London created 15/03/2023
-  type        = string
-  description = "The machine image name for the ECS cluster launch configuration."
 }
 
 # Auto-scaling Group
@@ -94,24 +65,28 @@ variable "enable_asg_autoscaling" {
   description = "Whether to enable auto-scaling of the ASG by creating a capacity provider for the ECS cluster."
 }
 
-
-# Certificates
-variable "ssl_certificate_id" {
-  type        = string
-  description = "The ARN of the certificate for https access through the ALB."
-}
-
-
 # DNS
-variable "zone_id" {
-  default     = "" # default of empty string is used as conditional when creating route53 records i.e. if no zone_id provided then no route53
+variable "cert_domain" {
   type        = string
-  description = "The ID of the hosted zone to contain the Route 53 record."
+  description = "The domain name for the SSL certificate to be used for the ALB."
 }
 
-variable "external_top_level_domain" {
+variable "domain_name" {
   type        = string
-  description = "The type levelel of the DNS domain for external access."
+  description = "The domain name for the Route 53 zone"
+  default     = ""
+}
+
+variable "route53_aliases_dev" {
+  type        = list(string)
+  description = "The list of Route 53 aliases for the dev ALB."
+  default     = []
+}
+
+variable "route53_aliases_dev_specs" {
+  type        = list(string)
+  description = "The list of Route 53 aliases for the dev specs ALB."
+  default     = []
 }
 
 
