@@ -45,6 +45,17 @@ data "aws_vpc" "vpc" {
   }
 }
 
+data "aws_route53_zone" "zone" {
+  count = length(concat(var.route53_aliases_dev, var.route53_aliases_dev_specs)) > 0 ? 1 : 0
+
+  name         = var.domain_name
+  private_zone = false
+}
+
+data "aws_acm_certificate" "cert" {
+  domain = var.cert_domain
+}
+
 data "aws_ec2_managed_prefix_list" "admin" {
   name = "administration-cidr-ranges"
 }
